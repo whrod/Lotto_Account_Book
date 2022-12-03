@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "database_development",
+    "password": "0519",
+    "database": "lotto_account_book",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
