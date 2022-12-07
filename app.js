@@ -13,14 +13,10 @@ const { sequelize } = require('./models');
 dotenv.config();
 const app = express();
 
-// sequelize.sync({ force: false }).then(() => {
-//   console.log('database connection success');
-// });
 app.use(cors());
 app.use(morgan('combined'));
-app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true })); //true : qs / false : querystring
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(
   session({
@@ -31,9 +27,20 @@ app.use(
       httpOnly: true,
       secure: false,
     },
-    name: 'session-cookie',
+    name: 'session-cookie', // name dafault : 'connect.sid'
   })
 );
+app.use('/', (req, res, next) => {
+  if (req.session.id) {
+    express.static(__dirname, 'public')(req, res, next);
+  } else {
+    next();
+  }
+});
+/* 미들웨어 확장
+cookie와 session 뒤에 있을 때 로그인한 유저에게만 스태틱을 작동하게 할때
+위처럼 조건문과 next()로 미들웨어를 확장할 수 있다.
+*/
 
 app.use(routes);
 
@@ -60,3 +67,7 @@ sequelize
   .catch((error) => {
     console.error('Unable to connect to the database: ', error);
   });
+
+// sequelize.sync({ force: false }).then(() => {
+//   console.log('database connection success');
+// });.
