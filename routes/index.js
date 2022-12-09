@@ -3,7 +3,7 @@ const router = express.Router();
 
 const userRouter = require('./userRouter');
 
-router.use('/main', (req, res) => {
+router.use('/', (req, res) => {
   return res.status(201).json('Hello');
 });
 
