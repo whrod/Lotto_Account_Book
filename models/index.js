@@ -44,4 +44,13 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.User = User;
+db.SocialType = SocialType;
+
+User.init(sequelize);
+SocialType.init(sequelize);
+
+User.associate(db);
+SocialType.associate(db);
+
 module.exports = db;
