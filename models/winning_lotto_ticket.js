@@ -1,44 +1,56 @@
 const Sequelize = require('sequelize');
+const { SELECT } = require('sequelize/types/query-types');
 
-module.exports = class PurLottoTicket extends Sequelize.Model {
+//Todo
+module.exports = class WinLottoTicket extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        pur_no_first: {
+        win_no_first: {
           type: Sequelize.INTEGER,
           allowNull: false,
         },
-        pur_no_second: {
+        win_no_second: {
           type: Sequelize.INTEGER,
           allowNull: false,
         },
-        pur_no_third: {
+        win_no_third: {
           type: Sequelize.INTEGER,
           allowNull: false,
         },
-        pur_no_fourth: {
+        win_no_fourth: {
           type: Sequelize.INTEGER,
           allowNull: false,
         },
-        pur_no_fifth: {
+        win_no_fifth: {
           type: Sequelize.INTEGER,
           allowNull: false,
         },
-        pur_no_sixth: {
+        win_no_sixth: {
           type: Sequelize.INTEGER,
           allowNull: false,
         },
-        pur_round: {
+        win_no_bonus: {
           type: Sequelize.INTEGER,
           allowNull: false,
         },
+        win_round: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        },
+        first_prize_amount: {
+          type: Sequelize.BIGINT,
+          allowNull: false,
+        },
+        second_prize_amount: {},
+        third_prize_amount: {},
       },
       {
         sequelize,
         timestamps: true,
         underscored: true,
-        modelName: 'PurLottoTicket',
-        tableName: 'purchased_lotto_ticket',
+        modelName: 'winLottoTicket',
+        tableName: 'winchased_lotto_ticket',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',
@@ -50,12 +62,12 @@ module.exports = class PurLottoTicket extends Sequelize.Model {
   관계연결 : winning_lotto_ticket, lotto_store)
   */
   static associate(db) {
-    db.PurLottoTicket.belongsTo(db.User, {
+    db.winLottoTicket.belongsTo(db.User, {
       foreignKey: 'user_id',
       targetKey: 'id',
     });
-    db.PurLottoTicket.hasMany(db.PurWinLottoTicket, {
-      foreignKey: 'purchased_lotto_ticket_id',
+    db.winLottoTicket.hasMany(db.winWinLottoTicket, {
+      foreignKey: 'winchased_lotto_ticket_id',
       sourceKey: 'id',
     });
   }
