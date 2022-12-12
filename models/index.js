@@ -8,6 +8,8 @@ const User = require('./user');
 const SocialType = require('./social_type');
 const PurLottoTicket = require('./purchased_lotto_ticket');
 const PurWinLottoTicket = require('./pur_win_lotto_ticket');
+const WinLottoTicket = require('./winning_lotto_ticket');
+const LottoStore = require('./lotto_store');
 
 const process = require('process');
 // const basename = path.basename(__filename);
@@ -54,15 +56,21 @@ db.User = User;
 db.SocialType = SocialType;
 db.PurLottoTicket = PurLottoTicket;
 db.PurWinLottoTicket = PurWinLottoTicket;
+db.WinLottoTicket = WinLottoTicket;
+db.LottoStore = LottoStore;
 
 User.init(sequelize);
 SocialType.init(sequelize);
 PurLottoTicket.init(sequelize);
 PurWinLottoTicket.init(sequelize);
+WinLottoTicket.init(sequelize);
+LottoStore.init(sequelize);
 
 User.associate(db);
 SocialType.associate(db);
 PurLottoTicket.associate(db);
 PurWinLottoTicket.associate(db);
+WinLottoTicket.associate(db);
+LottoStore.associate(db);
 
 module.exports = db;
