@@ -13,7 +13,7 @@ const { globalErrorHandler } = require('./utils/error');
 dotenv.config();
 const app = express();
 
-app.set('port', process.env.PORT || 8001);
+app.set('port', process.env.PORT || 8000);
 
 sequelize
   .sync({ force: false })

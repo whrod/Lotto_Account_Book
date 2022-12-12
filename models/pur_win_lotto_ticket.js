@@ -34,5 +34,9 @@ module.exports = class PurWinLottoTicket extends Sequelize.Model {
       foreignKey: 'purchased_lotto_ticket_id',
       targetKey: 'id',
     });
+    db.PurWinLottoTicket.belongsTo(db.WinLottoTicket, {
+      foreignKey: 'winning_lotto_ticket_id',
+      targetKey: 'id',
+    });
   }
 };
