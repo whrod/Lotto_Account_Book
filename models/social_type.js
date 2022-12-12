@@ -23,8 +23,6 @@ module.exports = class User extends Sequelize.Model {
     );
   }
 
-  //TODO 관계 연결
-  //social_type
   static associate(db) {
     db.SocialType.hasMany(db.User, {
       foreignKey: 'social_type_id',

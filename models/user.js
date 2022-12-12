@@ -33,11 +33,18 @@ module.exports = class User extends Sequelize.Model {
   }
 
   //TODO 관계 연결
-  //social_type
   static associate(db) {
     db.User.belongsTo(db.SocialType, {
       foreignKey: 'social_type_id',
       targetKey: 'id',
+    });
+    db.User.hasMany(db.PurLottoTicket, {
+      foreignKey: 'user_id',
+      sourceKey: 'id',
+    });
+    db.User.hasMany(db.PurWinLottoTicket, {
+      foreignKey: 'user_id',
+      sourceKey: 'id',
     });
   }
 };
