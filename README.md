@@ -1,5 +1,11 @@
 # LOTTO_ACCOUNT_BOOK
-개인 로또 회계 장부
+
+## usage
+`npm i`
+`sequelize create:db`
+`npm start`
+
+## 개인 로또 회계 장부
 
 ## 기능 구현
 - 회원가입, 로그인 (카카오 외부로그인)
