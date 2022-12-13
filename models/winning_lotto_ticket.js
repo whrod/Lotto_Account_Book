@@ -71,5 +71,9 @@ module.exports = class WinLottoTicket extends Sequelize.Model {
       foreignKey: 'winning_lotto_ticket_id',
       sourceKey: 'id',
     });
+    db.WinLottoTicket.hasMany(db.PurLottoTicket, {
+      foreignKey: 'winning_lotto_ticket_id',
+      sourceKey: 'id',
+    });
   }
 };
