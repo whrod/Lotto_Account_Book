@@ -34,7 +34,6 @@ module.exports = class LottoStore extends Sequelize.Model {
     );
   }
 
-  //TODO 관계 연결
   static associate(db) {
     db.User.hasMany(db.PurWinLottoTicket, {
       foreignKey: 'lotto_store_id',

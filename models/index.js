@@ -52,6 +52,7 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+//TODO 코드 줄이기
 db.User = User;
 db.SocialType = SocialType;
 db.PurLottoTicket = PurLottoTicket;
