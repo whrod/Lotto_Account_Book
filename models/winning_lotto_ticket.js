@@ -63,9 +63,6 @@ module.exports = class WinLottoTicket extends Sequelize.Model {
     );
   }
 
-  /*TODO
-  관계연결 : winning_lotto_ticket, lotto_store)
-  */
   static associate(db) {
     db.WinLottoTicket.hasMany(db.PurWinLottoTicket, {
       foreignKey: 'winning_lotto_ticket_id',

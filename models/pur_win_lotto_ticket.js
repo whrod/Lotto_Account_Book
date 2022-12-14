@@ -22,9 +22,6 @@ module.exports = class PurWinLottoTicket extends Sequelize.Model {
     );
   }
 
-  /*TODO
-  관계연결 : winning_lotto_ticket_id
-  */
   static associate(db) {
     db.PurWinLottoTicket.belongsTo(db.User, {
       foreignKey: 'user_id',

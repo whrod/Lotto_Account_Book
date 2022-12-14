@@ -4,14 +4,18 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const dotenv = require('dotenv');
-const path = require('path');
-
-const { sequelize } = require('./models');
-const routes = require('./routes');
-const { globalErrorHandler } = require('./utils/error');
+const passport = require('passport');
+// const path = require('path');
 
 dotenv.config();
+const routes = require('./routes');
+const { sequelize } = require('./models');
+const passportConfig = require('./passport');
+
 const app = express();
+passportConfig();
+
+const { globalErrorHandler } = require('./utils/error');
 
 app.set('port', process.env.PORT || 8000);
 
@@ -41,6 +45,8 @@ app.use(
     name: 'session-cookie', // name dafault : 'connect.sid'
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 // app.use('/', (req, res, next) => {
 //   if (req.session.id) {
 //     express.static(__dirname, 'public')(req, res, next);
