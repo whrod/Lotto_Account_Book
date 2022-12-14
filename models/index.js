@@ -4,6 +4,10 @@
 // const path = require('path');
 const Sequelize = require('sequelize');
 
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config')[env];
+
+//FIXME: 코드 줄이기
 const User = require('./user');
 const SocialType = require('./social_type');
 const PurLottoTicket = require('./purchased_lotto_ticket');
@@ -11,10 +15,8 @@ const PurWinLottoTicket = require('./pur_win_lotto_ticket');
 const WinLottoTicket = require('./winning_lotto_ticket');
 const LottoStore = require('./lotto_store');
 
-const process = require('process');
 // const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config')[env];
+
 const db = {};
 
 let sequelize;
@@ -43,16 +45,16 @@ if (config.use_env_variable) {
 //     db[model.name] = model;
 //   });
 
-Object.keys(db).forEach((modelName) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+// Object.keys(db).forEach((modelName) => {
+//   if (db[modelName].associate) {
+//     db[modelName].associate(db);
+//   }
+// });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-//TODO 코드 줄이기
+//FIXME: 코드 줄이기
 db.User = User;
 db.SocialType = SocialType;
 db.PurLottoTicket = PurLottoTicket;
