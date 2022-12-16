@@ -9,7 +9,7 @@ const config = require(__dirname + '/../config/config')[env];
 
 //FIXME: 코드 줄이기
 const User = require('./user');
-const SocialType = require('./social_type');
+// const SocialType = require('./social_type');
 const PurLottoTicket = require('./purchased_lotto_ticket');
 const PurWinLottoTicket = require('./pur_win_lotto_ticket');
 const WinLottoTicket = require('./winning_lotto_ticket');
@@ -56,21 +56,21 @@ db.Sequelize = Sequelize;
 
 //FIXME: 코드 줄이기
 db.User = User;
-db.SocialType = SocialType;
+// db.SocialType = SocialType;
 db.PurLottoTicket = PurLottoTicket;
 db.PurWinLottoTicket = PurWinLottoTicket;
 db.WinLottoTicket = WinLottoTicket;
 db.LottoStore = LottoStore;
 
 User.init(sequelize);
-SocialType.init(sequelize);
+// SocialType.init(sequelize);
 PurLottoTicket.init(sequelize);
 PurWinLottoTicket.init(sequelize);
 WinLottoTicket.init(sequelize);
 LottoStore.init(sequelize);
 
 User.associate(db);
-SocialType.associate(db);
+// SocialType.associate(db);
 PurLottoTicket.associate(db);
 PurWinLottoTicket.associate(db);
 WinLottoTicket.associate(db);

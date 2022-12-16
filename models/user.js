@@ -19,12 +19,16 @@ module.exports = class User extends Sequelize.Model {
         },
         age: {
           type: Sequelize.INTEGER.UNSIGNED,
-          allowNull: false,
+          allowNull: true,
         },
         social_id: {
           type: Sequelize.BIGINT,
           allowNull: true,
           unique: true,
+        },
+        provider: {
+          type: Sequelize.STRING(50),
+          allowNull: true,
         },
       },
       {
@@ -42,10 +46,6 @@ module.exports = class User extends Sequelize.Model {
 
   //TODO 관계 연결
   static associate(db) {
-    db.User.belongsTo(db.SocialType, {
-      foreignKey: 'social_type_id',
-      targetKey: 'id',
-    });
     db.User.hasMany(db.PurLottoTicket, {
       foreignKey: 'user_id',
       sourceKey: 'id',
